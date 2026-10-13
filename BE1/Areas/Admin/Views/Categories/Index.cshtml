@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BE1.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .bg{
+        background-color:lightgreen;
+        font-size:20
+    }
+    .bg-th{
+        background-color:lightgreen;
+        font-size:12;
+    }
+    .table-bg{
+        background-color:lightblue;
+
+
+    }
+</style>
+<h2 class="bg"> DANH SÁCH DANH MỤC </h2>
+
+
+<table class="table-bg">
+    <tr>
+        <th class="bg-th">
+            @*Html.DisplayNameFor(model => model.CategoryName)*@
+            TÊN DANH MỤC
+        </th>
+        <th class="bg-success"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td class="btn">
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("thêm mới", "Create", null, new {@class="btn btn-primary"})
+</p>
